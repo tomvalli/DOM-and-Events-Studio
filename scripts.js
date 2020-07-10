@@ -30,32 +30,42 @@ function init() {
         flightStatus.innerHTML = "The shuttle has landed.";
         document.getElementById("shuttleBackground").style.background = "green";
         document.getElementById("spaceShuttleHeight").innerHTML = 0;
-    }
+    };
 
     abort.onclick = function() {
         let response = confirm("Confirm that you want to abort the mission.");
         flightStatus.innerHTML = "Mission aborted.";
         document.getElementById("shuttleBackground").style.background = "green";
         document.getElementById("spaceShuttleHeight").innerHTML = 0;
-    }
+    };
 
     up.onclick = function() {
         moveRocket(0, -10);
-    }
+    };
     down.onclick = function() {
         moveRocket(0, 10);
-    }
+    };
     left.onclick = function() {
         moveRocket(-10, 0);
-    }
-    right.onclick = function() {
+    };
+    right.onclick = function() {//RIGHTBOUND 250 //// LEFTBOUND -250 /// DOWNBOUND 280
         moveRocket(10, 0);
-    }
+    };
 
     function moveRocket(moveX, moveY) {
         posY += moveY;
         posX += moveX;
         rocket.style.transform = `translate(${posX}px, ${posY}px)`;
+
+        if(posY < 0 || posX > 250 || posX < -250) {// || posY > 280
+            rocket.style.transform = "rotate(180deg)";
+            while (posY <= 280) {
+                posY++;
+                window.setTimeout(()=> { rocket.style.transform = `translate(${posX}px, ${posY}px)`; }, 100);
+            }
+            //rocket.setAttribute("src", "./images/explosion-blue.gif");
+
+        }
     }
 }
 
