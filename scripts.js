@@ -6,6 +6,7 @@ function init() {
     let land = document.getElementById("landing");
     let abort = document.getElementById("missionAbort");
     let flightStatus = document.getElementById("flightStatus");
+    let rocket = document.getElementById("rocket");
     let up = document.getElementById("up");
     let down = document.getElementById("down");
     let right = document.getElementById("right");
@@ -59,10 +60,15 @@ function init() {
 
         if(posY < 0 || posX > 250 || posX < -250) {// || posY > 280
             rocket.style.transform = "rotate(180deg)";
-            while (posY <= 280) {
-                posY++;
-                window.setTimeout(()=> { rocket.style.transform = `translate(${posX}px, ${posY}px)`; }, 100);
-            }
+            // while (posY <= 280) {
+            //     posY++;
+            //     let crash = ()=> { rocket.style.transform = `translate(${posX}px, ${posY}px)`; };
+            //     setTimeout(crash, 1000);
+                
+            // }
+
+            rocket.setAttribute("class", "rocketFall");
+            
             //rocket.setAttribute("src", "./images/explosion-blue.gif");
 
         }

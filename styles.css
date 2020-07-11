@@ -28,12 +28,18 @@ h1 {
     width: 550px;
 }
 
-
-
-@keyframes fall {
-
+#rocket {
+    position: absolute;
 }
 
-#rocketFall {
+@keyframes fall {
+    from {bottom: 250px;}
+    to {bottom: 0px;}
+}
 
+.rocketFall {
+    animation-name: fall;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
 }
